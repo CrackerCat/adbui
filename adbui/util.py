@@ -44,7 +44,7 @@ class Util(object):
         if err:
             logging.error('err: {}, arg: {}'.format(err.strip(), arg))
 
-        if encoding:
+        if encoding and isinstance(out, bytes):
             out = out.decode(encoding)
             err = err.decode(encoding)
 
