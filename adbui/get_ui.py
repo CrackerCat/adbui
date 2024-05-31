@@ -157,8 +157,8 @@ class GetUI(object):
         self.xml = etree.fromstring(xml_str, parser=parser)
         for element in self.xml.findall('.//node'):
             class_name = element.get('class').split('.')[-1].replace('$', '')
-            if class_name.startswith('0x'):
-                continue  # 0x 不能作为 tag name
+            if class_name[0].isdigit():
+                continue  # tag 不能数字开头
             element.tag = class_name  # 将每个node的name替换为class值，和 uiautomator 里显示的一致
 
 
